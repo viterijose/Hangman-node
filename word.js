@@ -5,8 +5,9 @@ var Letter = require("./letter.js");
 // var char = process.argv[3];
 // var words = process.argv[2];
 var letter;
-var Word = function (word) {
+var Word = function (word,inword) {
     this.words = [];//empty array to be filled with the letter objects created
+    this.inword = inword;//variable to handle a true or false statement to check if the letter guessed by the user is in any of the letter objects, every time we run the function to check letter objects it should returna true or false, if its true then remaining guesses++, if false remaining guesses --
     this.genlet = function (word) {//function to create the letter objects of the word passed by the arra from main.js
         word = word.split("");//create an array of letters from the word
         for (var i = 0; i < word.length; i++) {//loop through that array
@@ -21,19 +22,20 @@ var Word = function (word) {
             this.words[j].Guessing();//calls the function that prints the appropriate characters, found within the letter constructor in letter.js
             // this.words[j].guess;
         }
-        console.log(this.words)
+        // console.log(this.words)
         // letter.Guessing();//calls function from letter.js
     };
     this.guessFun = function (char) {//function to check the user guess
         for (var j = 0; j < this.words.length; j++) {//loops through all the letter objects
-            if (this.words[j].guess) {//skips the letter object is it finds that the guess is already true
-                this.words[j].Guessing();//if the guess is already true it will print out the underlying word
-            } else {
-                this.words[j].Guesses(char);//if the guess is not true it will check and see if the user guess is in any of the letter objects reamaining
-            }
-        }
+            if (!this.words[j].guess) {//runs the guess loop on letter.js if the guess is false, if its already true it will due nothing
+                this.words[j].Guesses(char);
+                if (this.words[j].guess == true) {
+                    this.inword = true;
+                };
+            };
+        };
         // console.log("---------After guess loop: "+JSON.stringify(this.words));
-        this.stringFun();//calls the function to print out the appropriate characters
+        // this.stringFun();//calls the function to print out the appropriate characters
     };
 }
 
