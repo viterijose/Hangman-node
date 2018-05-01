@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/viterijose/Hangman-node/issues"
   },
-  "homepage": "https://github.com/viterijose/Hangman-node#readme"
+  "homepage": "https://github.com/viterijose/Hangman-node#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0"
+  }
 }

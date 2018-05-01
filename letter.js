@@ -1,4 +1,4 @@
-var input = process.argv[2];
+// var input = process.argv[2];
 
 var letter = function (char,guess){
     this.char = char;
@@ -21,5 +21,6 @@ var letter = function (char,guess){
         }
     };
 }
-var Letter   = new letter("e",false);
-Letter.Guesses(input);
+module.exports = letter;
+// var Letter   = new letter("e",false);
+// Letter.Guesses(input);
