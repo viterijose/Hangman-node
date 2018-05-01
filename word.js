@@ -1,27 +1,28 @@
-var Letter = require ("./letter.js");
+var Letter = require("./letter.js");
 // var word = "office";
 // word = word.split("");
 // console.log(word);
 // var char = process.argv[3];
 // var words = process.argv[2];
-var letter = [];
-var Word = function(word){
-    // this.word = word;
-    this.genlet = function(word){
+var letter;
+var Word = function (word) {
+    this.words = [];
+    this.genlet = function (word) {
         word = word.split("");
-        for (var i = 0 ; i < word.length; i++){
-             letter = new Letter(word[i],false);
-            
+        for (var i = 0; i < word.length; i++) {
+            letter = new Letter(word[i], false);
+            this.words.push(letter);
+
         }
-        console.log(letter);
+        console.log(this.words);
     };
-    this.stringFun = function(){
+    this.stringFun = function () {
         letter.Guessing();//calls function from letter.js
     };
-    this.guessFun =  function(char){
-    
-        letter.Guesses(char);
-        
+    this.guessFun = function (char) {
+        for (var j = 0; j < this.words.length; j++) {
+            this.words[j].Guesses(char);
+        }
     };
 }
 
@@ -31,4 +32,4 @@ var Word = function(word){
 // var wordguess = new Word(words);
 // wordguess.guessFun(char);
 // wordguess.genlet();
-module.exports= Word;
+module.exports = Word;
