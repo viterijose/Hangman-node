@@ -77,6 +77,7 @@ function guess(remaining_guesses) {
                     }
                 } else {
                     console.log(colors.yellow("\n Please input a single letter not a number"));
+                    guess(remaining_guesses);
                 }
             });
     } else {
