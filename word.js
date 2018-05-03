@@ -19,7 +19,7 @@ var Word = function (word) {
     };
     this.printWord = function () {
         this.printword = "";//reset the print word everytime printWord function is called so the printWord concat won't have the previous answer
-        
+
         for (var j = 0; j < this.word.length; j++) {//loops through all the letter objects printing out an underscore or the underlying word if it is guessed
             this.word[j].printLetter();//calls the function that prints the appropriate characters, found within the letter constructor in letter.js
             // this.words[j].guess;
