@@ -9,7 +9,7 @@ var Word = function (word) {
     this.checkletters = false;//variable to handle a true or false statement to check if the letter guessed by the user is in any of the letter objects, every time we run the function to check letter objects it should return a true or false, if its true then remaining guesses++, if false remaining guesses --
     word = word.split("");//create an array of letters from the word
     for (var i = 0; i < word.length; i++) {//loop through that array
-        letter = new Letter(word[i], false);//create a letter object for each letter within the word array prviously created
+        letter = new Letter(word[i]);//create a letter object for each letter within the word array prviously created
         this.word.push(letter);//push the letter object created into the words array of the Word constructor
     };
     this.printWord = function () {
