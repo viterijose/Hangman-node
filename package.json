@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/viterijose/Hangman-node#readme",
   "dependencies": {
+    "colors": "^1.2.3",
     "inquirer": "^5.2.0"
   }
 }
