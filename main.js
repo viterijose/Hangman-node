@@ -52,17 +52,19 @@ function guess(remaining_guesses) {
                 },
             ])
             .then(function (inquirerResponse) {
-                console.log(chosenword.words[0].char);//run through the array of letterguess to check if the word was guessed, if it was guessed and user still has remaining guesses then change to next word in array and reset values if needed
+                for (var i = 0; i < chosenword.words.length; i++) {
+                    console.log("Characters in word:" + chosenword.words[i].char);//run through the array of letterguess to check if the word was guessed, if it was guessed and user still has remaining guesses then change to next word in array and reset values if needed
+                }
                 var userinput = inquirerResponse.userguess.toString();
-                console.log("Inquirer response: "+userinput);
-                console.log("Array of letters already guessed: "+letterguess);
+                // console.log("Inquirer response: "+userinput);
+                // console.log("Array of letters already guessed: "+letterguess);
                 if (letterguess.indexOf(userinput) < 0) {//checks is the user input is already in the array
                     letterguess.push(userinput);//pushing the user guess into an array to check for repeated letters
                     chosenword.guessFun(inquirerResponse.userguess);
                     chosenword.stringFun();
                     updateguess();
                 } else {
-                    console.log("You already guessed the letter: " +"\'"+inquirerResponse.userguess+"\'");
+                    console.log("\t You already guessed the letter: " + "\'" + inquirerResponse.userguess + "\'");
                     guess(remaining_guesses);
                 }
             });
