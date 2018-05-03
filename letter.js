@@ -1,4 +1,3 @@
-// var input = process.argv[2];
 
 var letter = function (char){//letter constructor that takes two arguments: the character from the word passed by the word.js and a guess argument originally set to false
     this.char = char;

@@ -1,10 +1,5 @@
 var Letter = require("./letter.js");
 var colors = require('colors');
-// var word = "office";
-// word = word.split("");
-// console.log(word);
-// var char = process.argv[3];
-// var words = process.argv[2];
 var letter;
 
 var Word = function (word) {
@@ -38,15 +33,7 @@ var Word = function (word) {
                 };
             };
         };
-        // console.log("---------After guess loop: "+JSON.stringify(this.words));
-        // this.stringFun();//calls the function to print out the appropriate characters
     };
 }
 
-// for (var i = 0 ; i < word.length; i++){
-//     var letter = new Letter(words[i],false);
-// }
-// var wordguess = new Word(words);
-// wordguess.guessFun(char);
-// wordguess.genlet();
 module.exports = Word;
