@@ -1,5 +1,5 @@
 var inquirer = require("inquirer");
-var Words = require("./word.js");
+var Word = require("./word.js");
 var colors = require('colors');
 var selected_word =["bulbasaur", "charmander", "squirtle", "chikorita", "cyndaquil", "totodile", "treecko", "torchic", "mudkip", "turtwig", "chimchar", "piplup"];
 var letter_true = [];//array of letters that were guessed and correct
@@ -34,7 +34,7 @@ inquirer
             selected = parseFloat(inquirerResponse.number);//changing string from inquirer input into number
             username = inquirerResponse.username.toUpperCase();
             console.log("\nWelcome " + username + ", test your knowledge of all the starter pokemon with this game.\nYour first pokemon to guess is: ")
-            chosenword = new Words(selected_word[selected]);//creating a new object with the word from the array
+            chosenword = new Word(selected_word[selected]);//creating a new object with the word from the array
             chosenword.printWord();
             guess(remaining_guesses);
         }
@@ -62,7 +62,7 @@ function guess(remaining_guesses) {
 
                     } else if (letterguess.indexOf(inquirerResponse.userguess) < 0) {//checks is the user input is already in the array
                         letterguess.push(inquirerResponse.userguess);//pushing the user guess into an array to check for repeated letters
-                        chosenword.checkGuessWord(inquirerResponse.userguess);
+                        chosenword.isGuessInWord(inquirerResponse.userguess);
                         chosenword.printWord();
                         chosenword.word.forEach(function (letter) {
                             if (letter.guess && letter_true.indexOf(letter.char) < 0) {
@@ -77,6 +77,7 @@ function guess(remaining_guesses) {
                     }
                 } else {
                     console.log(colors.yellow("\n Please input a single letter not a number"));
+                    guess(remaining_guesses);
                 }
             });
     } else {
@@ -85,7 +86,7 @@ function guess(remaining_guesses) {
 };
 
 function generateWordObject(number) {
-    chosenword = new Words(selected_word[number]);
+    chosenword = new Word(selected_word[number]);
     letter_true = [];
     letterguess = [];
     chosenword.printWord();
